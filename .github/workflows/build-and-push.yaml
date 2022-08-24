@@ -1,15 +1,5 @@
 on:
-  workflow_call:
-    inputs:
-      aws_role_arn:
-        required: true
-        type: string
-      aws_region:
-        required: false
-        type: string
-      ecr_url:
-        required: true
-        type: string
+  workflow_call
 
 jobs:
   build:
