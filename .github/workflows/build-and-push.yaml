@@ -29,8 +29,8 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: ${{ inputs.aws_role_arn }}
-        aws-region: ${{ inputs.aws_region }}
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        aws-region: ${{ env.AWS_REGION }}
         role-duration-seconds: 1800
     
     - name: Generate Short SHA
@@ -51,7 +51,7 @@ jobs:
         pull: true
         push: true
         tags: |
-          "${{ inputs.ecr_url }}:${{ steps.sha8.outputs.SHA8 }}"
+          "${{ env.ECR_URL }}:${{ steps.sha8.outputs.SHA8 }}"
         cache-from: type=gha
         cache-to: type=gha,mode=max
         secret-files: |
