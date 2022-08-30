@@ -28,9 +28,9 @@ jobs:
         role-duration-seconds: 1800
     
     - name: Generate Short SHA
-      id: sha8
+      id: sha7
       shell: bash
-      run: echo ::set-output name=SHA8::$(echo $GITHUB_SHA | cut -c1-7)
+      run: echo ::set-output name=SHA7::$(echo $GITHUB_SHA | cut -c1-7)
 
     - name: Set up Docker Context for Buildx
       id: buildx-context
@@ -53,6 +53,6 @@ jobs:
         pull: true
         push: true
         tags: |
-          "${{ secrets.ECR_URL }}:${{ steps.sha8.outputs.SHA8 }}"
+          "${{ secrets.ECR_URL }}:${{ steps.sha7.outputs.SHA7 }}"
         cache-from: type=gha
         cache-to: type=gha,mode=max
