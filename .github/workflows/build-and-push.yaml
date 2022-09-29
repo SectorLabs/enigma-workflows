@@ -51,8 +51,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: |
-          {{ secrets.ECR_URL }}
+        images: ${{ secrets.ECR_URL }}
         tags: |
           type=sha,prefix=,format=short
           type=ref,event=tag
