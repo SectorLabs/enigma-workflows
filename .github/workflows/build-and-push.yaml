@@ -52,10 +52,11 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: ${{ secrets.ECR_URL }}
+        flavor: |
+          latest=false
         tags: |
           type=sha,prefix=,format=short
           type=ref,event=tag
-          type=raw,value=latest,enable=false
         
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v3
