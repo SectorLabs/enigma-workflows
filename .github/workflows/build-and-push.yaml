@@ -1,5 +1,10 @@
 on:
-  workflow_call
+  workflow_call:
+    inputs:
+      dockerfile:
+        description: 'Path to the dockerfile'
+        required: false
+        type: string
 
 permissions:
   id-token: write
@@ -10,9 +15,6 @@ jobs:
     name: Build Image
     runs-on: self-hosted
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    
     - name: Install Packages
       run: | 
         sudo apt update -y && \
@@ -61,6 +63,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v3
       with:
+        file: ${{ inputs.dockerfile }}
         pull: true
         push: ${{ github.event_name != 'pull_request' }}
         tags: ${{ steps.meta.outputs.tags }}
