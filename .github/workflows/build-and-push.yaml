@@ -5,11 +5,16 @@ on:
         description: 'Path to the dockerfile'
         required: false
         type: string
-      ecr_url:
+    secrets:
+      ECR_URL:
         description: 'ECR URL to push the docker image to'
-        default: ${{ secrets.ECR_URL }}
         required: false
-        type: string
+      AWS_ROLE_ARN:
+        description: 'ARN of the AWS Role to assume when pushing to ECR'
+        required: false
+      AWS_REGION:
+        description: 'The default AWS Region'
+        required: false
 
 permissions:
   id-token: write
