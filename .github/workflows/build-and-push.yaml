@@ -63,7 +63,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        images: ${{ inputs.ecr_url }}
+        images: ${{ secrets.ECR_URL }}
         flavor: |
           latest=false
         tags: |
