@@ -54,6 +54,9 @@ jobs:
       with:
         version: latest
         endpoint: builders
+        config-inline: |
+          [registry."docker.io"]
+            mirrors = ["docker-mirror.empglabs.com"]
 
     - name: Login to Amazon ECR
       id: login-ecr
