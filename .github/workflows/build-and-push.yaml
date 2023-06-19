@@ -42,7 +42,7 @@ jobs:
     - name: Generate Short SHA
       id: sha7
       shell: bash
-      run: echo ::set-output name=SHA7::$(echo $GITHUB_SHA | cut -c1-7)
+      run: echo "SHA7=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_OUTPUT
 
     - name: Set up Docker Context for Buildx
       id: buildx-context
